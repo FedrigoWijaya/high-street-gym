@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Status</title>
+        <%- include("partials/head.ejs") %>
+    </head>
+ <body>
+        <main>
+        <%- include("partials/header.ejs") %>
+	<section>
+        <article class="status-page">
+            <h2><%= status %></h2>
+            <% if (typeof message != "undefined") { %>
+            <p><%= message %></p>
+            <% } %>
+            <a href="/homepage"> back</a>
+        </article>
+	</section>
+    
+     <%- include("partials/footer.ejs") %>
+    </main>
+    </body>
+
+</html>

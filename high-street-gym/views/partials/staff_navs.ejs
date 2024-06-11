@@ -1,0 +1,39 @@
+<header>
+    <nav class="navbar">
+        <div class="logo"><a href="/member_homepage">
+          <img src="../img/High-Street-Gym.png" alt="logo"/>
+      </a>
+        </div>
+        <ul class="nav-menu">
+            <% if (accessRole === "admin") { %>
+                <li class="nav-item">
+                    <a href="/admin_user">User</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin_blog">blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/booking_manage">Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/admin_class">Class</a>
+                  </li>
+                  <li>
+                    <a href="/staff_logout">Logout</a>
+                  </li>
+                  <% } else if (accessRole == "trainer") { %>
+                    <li class="nav-item">
+                        <a href="/booking_manage">Booking</a>
+                      </li>
+                    <li>
+                        <a href="/staff_logout">Logout</a>
+                      </li>
+                    <% } %>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+</header>

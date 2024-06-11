@@ -1,0 +1,27 @@
+<section class="body-background-box">
+
+<form action="/blog_user_delete_confirm" method="post" class="booking-manage-edit">
+
+    <input type="hidden" name="blog_id" value="<%= editBlog.blog_id %>">
+    <input type="hidden" name="user_id" value="<%= editBlog.user_id %>"> 
+
+
+    <label for="blog_title" class="">Title:</label>
+    <input type="text" name="blog_title" id="blog-title" value="<%= editBlog.blog_title %>">
+
+    <label for="blog_date">Date:</label>
+    <input type="text" name="blog_title" id="blog-title" value="<%= editBlog.blog_date.toLocaleDateString('en-AU', { day: 'numeric', month: "short", year: "numeric"}) %>"readonly>
+
+    <label for="blog_user">Posted by</label>
+    <input type="text" name="blog_title" id="blog-title" value="<%= editBlog.user_first_name %> <%= editBlog.user_last_name %>">
+
+    <label for="blog-post" class="">Post content: </label>
+    <textarea type ="text" name="blog_detail" id="blog-detail" cols="30" rows="10" className="input-contact" readonly>
+        <%= editBlog.blog_post %>
+        </textarea>
+
+        <div class="button">
+        <input type="submit" name="action" value="delete" class="signup-button">
+    </div>
+</form>
+</section>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Signup</title>
+        <%- include("partials/head.ejs") %>
+    </head>
+ <body>
+        <main>
+        <%- include("partials/header.ejs") %>
+        <section class="class-section">
+            <div class="signup-container">
+              <form action="/signupusers" method="post" class="signup-form">
+                <div class="signup-title">SIGNUP HERE</div>
+    
+                <label for="FirstName">
+                  <img src="/img/user.png" alt="user" />
+                  <span class="signup-label-text">First Name</span><span>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="FirstName"
+                  required
+                  pattern="[a-zA-Z]+"
+                  name="user_firstname"
+                  placeholder="Enter Your First Name"
+                />
+                <div class="error-message" id="FirstName">
+                  Please fill your first name
+                </div>
+    
+                <label for="LastName">
+                  <img src="/img/user.png" alt="user" />
+                  <span class="signup-label-text">Last Name</span><span>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="LastName"
+                  required
+                  pattern="[a-zA-Z]+"
+                  name="user_lastname"
+                  placeholder="Enter Your Last Name"
+                />
+                <div class="error-message" id="LastName">
+                
+                  Please fill your last name
+                </div>
+    
+                <label for="Username-Signup">
+                  <img src="/img/user.png" alt="user" />
+                  <span class="signup-label-text">Username</span><span>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="Username-Signup"
+                  required
+                  pattern="[a-zA-Z]+"
+                  name="user_username"
+                  placeholder="Enter Your Username"
+                />
+                <div class="error-message" id="FirstName">
+                  Please fill out username
+                </div>
+    
+                <label for="Email-Signup">
+                  <img src="/img/email.png" alt="mail" />
+                  <span class="signup-label-text">Email</span><span>*</span>
+                </label>
+                <input
+                  type="email"
+                  id="Email-Signup"
+                  required
+                  pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                  name="user_email"
+                  placeholder="Enter Your Email Address"
+                />
+                <div class="error-message" id="Email-Signup">
+                  Fill out like as example (example@id.com)
+                </div>
+    
+                <label for="Phone-Signup">
+                  <img src="/img/call.png" alt="call" />
+                  <span class="signup-label-text">Phone</span><span>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="Phone-Signup"
+                  required
+                  pattern="[0-9]{10}"
+                  name="user_phone"
+                  placeholder="Enter Your Phone Number"
+                />
+                <div class="error-message" id="FirstName">
+                  Please fill 10 Digit number
+                </div>
+    
+                <label for="Password-Signup">
+                  <img src="/img/lock.png" alt="lock" />
+                  <span class="signup-label-text">Password</span><span>*</span>
+                </label>
+                <input
+                  type="password"
+                  id="Password-Signup"
+                  required
+                  placeholder="Enter Your Password" 
+                  name="user_password"
+                />
+                <div class="error-message" id="FirstName">
+                  Please fill out this form
+                </div>
+                <div class="no-grid-here">
+                  <input type="checkbox" id="tos" required/>
+                   <label for="tos">Agree to the term of service</label>
+                </div>
+    
+                <div class="tos-class">
+                  
+                  <div class="bottom-button-signups">
+                    <div class="tos-class">
+                    <button type="submit" class="signup-button">Signup</button>
+                      <div class="button">
+                        <a href="/login">Back</a>
+                      </div>
+                    </div>
+                  </div>
+                        </form>
+                  </div>
+                </div>
+            </div>
+          </section>
+     <%- include("partials/footer.ejs") %>
+    </main>
+    </body>
+
+</html>

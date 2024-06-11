@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>booking delete</title>
+    <%- include("partials/head.ejs") %>
+</head>
+<body>
+    <main>
+        <%- include("partials/member_nav.ejs") %>
+        <div class="booking-title">
+        <h1>Your Booking Detail</h1>
+    </div>
+        <section>
+            <form action="/booked_class_delete" method="post" class="booking-manage-edit">
+                <input type="hidden" name="booking_id" value="<%= editBooking.booking_id %>">
+                <input type="hidden" name="class_id" value="<%= editBooking.class_id %>">
+                <input type="hidden" name="user_id" value="<%= editBooking.user_id %>">
+                <input type="hidden" name="booking_datetime" value="<%= editBooking.booking_datetime %>">
+
+                <label for="class-date">Date: </label>
+                <input type="text" id="class-date" name="class_date" value="<%= new Date(editBooking.class_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) %>" readonly>
+
+                <label for="class-name">Class: </label>
+                <% const activity = allActivities.find(activity => activity.activity_id == editBooking.activity_id) %>
+                <% if (activity) { %>
+                    <input type="text" id="class-name" name="activity_name" value="<%= activity.activity_name %>" readonly>
+                <% } else { %>
+                    <input type="text" id="class-name" name="activity_name" value="Not found" readonly>
+                <% } %>
+
+                <label for="class-description">Description: </label>
+                <% if (activity) { %>
+                    <input type="text" id="class-description" name="activity_description" value="<%= activity.activity_description %>" readonly>
+                <% } else { %>
+                    <input type="text" id="class-description" name="activity_description" value="Not found" readonly>
+                <% } %>
+
+                <label for="activity-duration">Duration: </label>
+                <% if (activity) { %>
+                    <input type="text" id="activity-duration" name="activity_duration" value="<%= activity.activity_duration %>" readonly>
+                <% } else { %>
+                    <input type="text" id="activity-duration" name="activity_duration" value="Not found" readonly>
+                <% } %>
+
+                <label for="trainer-name">Trainer Name: </label>
+                <% const trainer = allTrainers.find(trainer => trainer.user_id == editBooking.class_trainer_user_id) %>
+                <% if (trainer) { %>
+                    <input type="text" id="trainer-name" name="class_trainer_first_name" value="<%= trainer.user_first_name %> <%= trainer.user_last_name %>" readonly>
+                <% } else { %>
+                    <input type="text" id="trainer-name" name="class_trainer_first_name" value="Not found" readonly>
+                <% } %>
+
+                <label for="class-location">Location: </label>
+                <% const location = allLocations.find(location => location.location_id == editBooking.location_id) %>
+                <% if (location) { %>
+                    <input type="text" id="class-location" name="location_name" value="<%= location.location_name %>" readonly>
+                <% } else { %>
+                    <input type="text" id="class-location" name="location_name" value="Not found" readonly>
+                <% } %>
+
+                <div class="classes-button">
+                    <a href="/booked_class?user_id=<%= editBooking.user_id %>" class="button">Back</a>
+                </div>
+
+                <div>
+                    <input type="submit" name="action" value="delete" class="button">
+                </div>
+            </form>
+        </section>
+        <%- include("partials/footer_member.ejs") %>
+    </main>
+</body>
+</html>

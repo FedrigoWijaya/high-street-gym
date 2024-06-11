@@ -1,0 +1,15 @@
+<% for (const blog of blogs) {%>
+  <div class="blog-container">
+    <article id="blog-title">
+      <div>
+        <h2><%= blog.blog_title %></h2>
+      </div>
+    </article>
+    <p class="blue-text">
+      Date: <%= new Date(blog.blog_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) %>
+    </p>
+    <p>Posted By <%= blog.user_first_name %> <%= blog.user_last_name %></p>
+    <p><%= blog.blog_post %></p>
+  </div>
+  
+<% } %>

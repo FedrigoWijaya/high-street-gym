@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Class Book</title>
+  <%- include("partials/head.ejs") %>
+</head>
+<body>
+  <main>
+    <%- include("partials/member_nav.ejs") %>
+
+    <div class="booking-title">
+      <h1>Class Booking</h1>
+    </div>
+    <section>
+
+      <form action="/booking_class_action" method="post" class="booking-manage-edit">
+        <input type="hidden" name="class_id" value="<%= createBooking.class_id %>">
+
+        <label for="class-date">Date</label>
+        <input type="text" name="class_date-show" id="class-date-show" value="<%= createBooking.class_date.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric'}) %>" readonly>
+        <input hidden type="date" name="class_date" id="class-date" value="<%= createBooking.class_date %>">
+
+        <label for="class-name">Class</label>
+        <input type="text" name="class_name" id="class-name" value="<%= createBooking.activity_name %>" readonly>
+
+        <label for="class-description">Class Description</label>
+        <textarea name="class_description" id="activity-description" readonly><%= createBooking.activity_description %></textarea>
+
+        <label for="activity-duration">Class Duration</label>
+        <input type="text" name="activity_duration" id="activity-duration" value="<%= createBooking.activity_duration %>" readonly>
+
+        <label for="user-first-name">Trainer Name :</label>
+        <input type="text" name="user-first-name" id="user-first-name" value="<%= createBooking.class_trainer_first_name %> <%= createBooking.class_trainer_last_name %>" readonly>
+
+        <label for="class-location">Location :</label>
+        <input type="text" name="class-location" id="class-location" value="<%= createBooking.location_name %>" readonly>
+        
+        <div class="classes-button">
+          <a href="/class_page">Back to class</a>
+        </div>
+        
+        <div class="classes-button">
+          <input type="submit" name="action" value="Book Now"/>
+        </div>
+      </form>
+
+     
+
+     
+    </section>
+
+    <%- include("partials/footer_member.ejs") %>
+  </main>
+</body>
+</html>

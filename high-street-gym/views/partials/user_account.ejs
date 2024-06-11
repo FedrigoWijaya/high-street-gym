@@ -1,0 +1,53 @@
+<!-- partials/user_account.ejs -->
+<div class="account-container">
+<article class="account-detail">
+    <div class="account-title">
+        <h2>Account Detail</h2>
+    </div>
+</article>
+
+<article class="account-form" >
+    <div>
+        <p class="text">First name:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_first_name %></p>
+    </div>
+    <div>
+        <p class="text">Last name:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_last_name %></p>
+    </div>
+    <div>
+        <p class="text">Username:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_username %></p>
+    </div>
+    <div>
+        <p class="text">Phone:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_phone %></p>
+    </div>
+    <div>
+        <p class="text">Email:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_email %></p>
+    </div>
+    <div>
+        <p class="text">Password:</p>
+    </div>
+    <div>
+        <p class="text"><%= user.user_password.replace(/./g, '*').substring(0, 10) %></p>
+    </div>
+    <div>
+        
+    </div>
+    <div>
+        <a href="/edit_profile" class="button">edit profile</a>
+    </div>
+</article>
+</div>

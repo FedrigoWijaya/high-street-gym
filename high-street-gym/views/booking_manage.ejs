@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Booking manage</title>
+        <%- include("partials/head.ejs") %>
+    </head>
+    <body>
+        <main>
+            <%- include("partials/staff_navs.ejs", { accessRole }) %>
+            
+            <div class="booking-title">
+                <h1>BOOKING MANAGE</h1>
+            </div>
+            <div class="member-class-search">
+                
+                <form action="/booking_manage" method="get" class="class-search-form">
+                      <input type="text" name="search_term" id="search-term" placeholder="Member Name"/>
+                  <input type="submit" value="Search" id="search"/>
+                </form>
+              </div>
+             <%- include("admin_partials/booking_nav.ejs") %>
+            <section class="booking-section">
+                <div class="booking-list">
+                <span>Member name</span>
+                <span>Class name</span>
+                <span>Booking Date</span>
+                <span>Booking Status</span>
+                <span class="invisible"></span>
+            </div>
+                <% for (let booking of allBookings) { %>
+                    <div class="booking-list-row" >
+                    <span class="data-user-name"><%= booking.user_first_name %> <%= booking.user_last_name %></span>
+                    <span><%= booking.activity_name %></span>
+                    <span><%= new Date(booking.booking_datetime).toLocaleString('en-AU', { day: 'numeric', month: "short", year: "numeric", hour: '2-digit', minute: '2-digit'}) %></span>
+                   <span><%= booking.booking_status %></span>
+                    <div class="booking-button">
+                        <a href="/booking_manage_edit?edit_id=<%= booking.booking_id %>" class="link-button">Edit</a>
+                    </div>
+                </div>
+                <% } %>
+            </section>
+            <%- include("partials/footer_member.ejs") %>
+        </main>
+    </body>
+</html>

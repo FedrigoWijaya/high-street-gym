@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+    <title>View Your Blog</title>
+</head>
+<body>
+
+    <%- include("partials/member_nav.ejs") %>
+    <main>
+        <section class="blog-section">
+        <h1>Your Blog</h1>
+        <%- include("partials/blog_nav.ejs") %>
+
+        <!-- body box -->
+        <% for (const blog of blogs) {%>
+          <div class="blog-container">
+          <article id="blog-title">
+                <div>
+                  <h2><%= blog.blog_title %></h2>
+                </div>
+                
+              </article>
+              <p class="blue-text">
+                Date: <%= new Date(blog.blog_date).toLocaleDateString('en-AU', { day:
+                'numeric', month: 'short', year: 'numeric' }) %>
+              </p>
+              <p>Posted By <%= blog.user_first_name %> <%= blog.user_last_name %></p>
+              <p><%= blog.blog_post %></p>
+              <div class="button">
+                <a href="/blog_delete?id=<%= blog.blog_id %>">Delete</a>
+         </div>
+       </article>
+            </div>   
+            <% } %>          
+        </section>
+    </main>
+
+    <%- include("partials/footer_member.ejs") %>
+    
+</body>
+</html>

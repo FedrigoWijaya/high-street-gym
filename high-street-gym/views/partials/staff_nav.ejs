@@ -1,0 +1,11 @@
+<nav>
+    <% if (accessRole === "admin") { %>
+    <a href="/admin_user">User</a>
+    <a href="/admin_blog">blog</a>
+    <a href="/admin_booking">Booking</a>
+    <a href="/admin_class">Class</a><a href="/"></a>
+    <% } else if (accessRole == "trainer") { %>
+    <a href="/admin_booking">Booking</a>
+    <% } %>
+    <a href="/staff_logout">Logout</a>
+</nav>

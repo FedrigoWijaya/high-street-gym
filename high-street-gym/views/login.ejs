@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <%- include("partials/head.ejs") %>
+    </head>
+ <body>
+        <main>
+        <%- include("partials/header.ejs") %>
+        <section class="login-section">
+            <div class="login-form">
+              <form action="/loginuser"
+              method="post">
+                <h2>Login Here</h2>
+                <div class="login-container">
+                  <div class="icon">
+                    <img
+                      src="/img/user.png"
+                      alt="icon"
+                    />
+                    <p>Username</p>
+                  </div>
+                  <input
+                    class="input-field-login"
+                    type="text"
+                    placeholder="Enter Your Username"
+                    name="user_username"
+                  />
+                </div>
+                <div class="login-container">
+                  <div class="icon">
+                    <img
+                      src="/img/lock.png"
+                      alt="icon"/>
+                    <p>Password</p>
+                  </div>
+                  <input
+                    class="input-field-login"
+                    type="password"
+                    name="user_password"
+                    placeholder="Enter Your Password"
+                  />
+                </div>
+                <button type="submit" value="Login" class="login-button">LOGIN</button>
+                <div class="bottom-button">
+                  <p>Don't have account?</p>
+                  <a href="/signupusers">click here</a>
+                </div>
+              </form>
+            </div>
+          </section>
+	
+     <%- include("partials/footer.ejs") %>
+    </main>
+    </body>
+
+</html>

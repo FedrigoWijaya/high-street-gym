@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+    <title>Staff Admin</title>
+</head>
+<body>
+    <main>
+        <%- include("partials/staff_navs.ejs", { accessRole }) %>
+        <article class="admin-title">
+            <div>
+                <h2>Blog Manage</h2>
+            </div>
+        </article>
+        <section class="admin-half-half-layout">
+            <section class="">
+                <div class="user-admin-data-list-header">
+                    <span class="data-list-heading">Blog</span>
+                    <span class="data-list-heading" >Posted By</span>
+                    <span class="data-list-heading">Date Created</span>
+                    <span class="data-list-heading"></span>
+                </div>
+                <% for (let blog of allBlogs) { %>
+                <div class="user-data-list-row">
+                    <span><%= blog.blog_title %></span>
+                    <span><%= blog.user_first_name %> <%= blog.user_last_name %></span>
+                    <span><%= new Date(blog.blog_date).toLocaleDateString('en-AU') %></span>
+                    <span class="grid-button">
+                        <a href="/admin_blog?edit_id=<%= blog.blog_id %>" class="link-button">Edit</a>
+                    </span>
+                </div>
+                <% } %>
+            </section>
+            <form action="/admin_blog" method="post" class="user-form-grid">
+                <input type="hidden" name="blog_id" value="<%= editBlog.blog_id %>">
+                
+                <label for="blog_title">Blog Title:</label>
+                <input type="text" id="blog_title" name="blog_title" class="blog_input" value="<%= editBlog.blog_title %>">
+                
+                <label for="blog_post">Blog Content:</label>
+                <input type="text" id="blog_post" name="blog_post"  value="<%= editBlog.blog_post %>" class="post-text">
+                
+                <input type="submit" name="action" value="delete">
+                <% if (editBlog.blog_id == "0") { %>
+                <input type="submit" name="action" value="create" class="blog-button">
+                <% } else { %>
+                <input type="submit" name="action" value="update" class="blog-button">
+                <% } %>
+            </form>
+        </section>
+        <%- include("partials/footer_member.ejs") %>
+    </main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Class</title>
+    <%- include("partials/head.ejs") %>
+</head>
+<body>
+    <main>
+        <%- include("partials/staff_navs.ejs") %>
+        <section>
+            <div class="booking-title">
+            <h1>Create Class</h1>
+         </div>
+            <form action="/admin_class_create" method="post" class="booking-manage-edit">
+                <input type="hidden" name="class_id" value="<%= editClass.class_id %>">
+                
+                <% if (editClass.class_id=="0") { %>
+                    <label for="class-date">Date :</label>
+                    <input type="date" name="class_date" id="class-date" required>
+                <% } else { %>
+                    <label for="class-date">Date :</label>
+                    <input type="date" name="class_date" id="class-date" value="<%= editClass.class_date ? new Date(editClass.class_date).toISOString().slice(0, 10) : '' %>" placeholder="YYYY-MM-DD">
+                <% } %>
+
+                <label for="class-name">Class Name</label>
+                <select name="activity_id" id="class-trianer-user-id">
+                    <% for (const allActivitie of allActivities) { %>
+                        <option value="<%= allActivitie.activity_id %>">
+                            <%= allActivitie.activity_name %>
+                        </option>
+                    <% } %>
+                </select>
+
+                <label for="class-trianer-firstname">Trainer name:</label>
+                <select name="class_trainer_user_id" id="class-trianer-user-id">
+                    <% for (const allTrainer of allTrainers) { %>
+                        <option value="<%= allTrainer.user_id %>">
+                            <%= allTrainer.user_first_name %> <%= allTrainer.user_last_name %>
+                        </option>
+                    <% } %>
+                </select>
+
+                <label for="location_name">Location :</label>
+                <select name="location_id" id="location_id">
+                    <option value="1" <%= editClass.location_id == "1" ? "selected" : "" %>>Ashgrove</option>
+                    <option value="2" <%= editClass.location_id == "2" ? "selected" : "" %>>Brisbane City</option>
+                    <option value="3" <%= editClass.location_id == "3" ? "selected" : "" %>>Chermside</option>
+                    <option value="4" <%= editClass.location_id == "4" ? "selected" : "" %>>Graceville</option>
+                    <option value="5" <%= editClass.location_id == "5" ? "selected" : "" %>>Westlake</option>
+                </select>
+                
+                <div class="button">
+                    <input type="submit" name="action" value="create" class="button"/>
+                </div>
+
+                <div class="button">
+                    <a href="/admin_class">Back</a>
+                </div>
+
+                <% if (editClass.class_id != "0") { %>
+                    <div class="button">
+                        <input type="submit" name="action" value="delete" class="button"/>
+                    </div>
+                <% } %>
+            </form> 
+        </section>
+
+        <%- include("partials/footer_member.ejs") %>
+    </main>
+</body>
+</html>
